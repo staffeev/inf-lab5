@@ -36,7 +36,6 @@ function  process_file() {
 			flag=1
 		fi
 	done < "$1"
-	return 0
 }
 
 flag=0
