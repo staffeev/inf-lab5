@@ -33,7 +33,7 @@ function  process_file() {
 		local result=$?
 		if [[ "$result" == 1 ]]; then
 			echo "There is incorrect bracket sequence in line" "$counter" "in file" "$1"
-			return 1
+			flag=1
 		fi
 	done < "$1"
 	return 0
@@ -44,7 +44,6 @@ IFS=""
 while read -r filename || [ -n "$filename" ]
 do	
 	process_file $filename
-	flag=$((flag+$?))
 done < <(find . -type f -name '*.txt')
 
 if [[ "$flag" > 0 ]]; then
